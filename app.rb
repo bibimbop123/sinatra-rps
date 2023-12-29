@@ -7,11 +7,8 @@ BetterErrors.application_root = __dir__
 BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
 
 get("/") do
-  erb :navbar
-  erb :elephants
-end
-
-require 'sinatra'
+    erb :elephants
+  end
 
 def play_rock_paper_scissors(player_choice)
   choices = ["Rock", "Paper", "Scissors"]
@@ -37,8 +34,10 @@ def play_rock_paper_scissors(player_choice)
 end
 
 get '/rock' do
-  erb :navbar
   player_choice = "Rock"
-  play_rock_paper_scissors(player_choice)
+  game_result = play_rock_paper_scissors(player_choice)
 
+  erb :layout do
+    "#{game_result}"
+end
 end

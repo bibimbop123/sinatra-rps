@@ -8,6 +8,10 @@
 
   <body>
 
+ <% if !@navbar_rendered %>
+    <%= erb :navbar %>
+    <% @navbar_rendered = true %>
+  <% end %>
     <%= yield %>
 
   </body>
